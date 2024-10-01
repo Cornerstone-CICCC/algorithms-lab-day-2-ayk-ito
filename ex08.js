@@ -3,4 +3,24 @@
 // Example: groupByAge([{ name: "Alice", age: 25 }, { name: "Bob", age: 25 }, { name: "Charlie", age: 30 }])
 // should return { 25: [{ name: "Alice", age: 25 }, { name: "Bob", age: 25 }], 30: [{ name: "Charlie", age: 30 }] }.
 
-console.log(groupByAge([{ name: "Alice", age: 25 }, { name: "Bob", age: 25 }, { name: "Charlie", age: 30 }])); // Expected output: { 25: [{ name: "Alice", age: 25 }, { name: "Bob", age: 25 }], 30: [{ name: "Charlie", age: 30 }] }
+function groupByAge(people) {
+  const groupByAgePeople = {};
+  for (const person of people) {
+    if (groupByAgePeople[person.age]) {
+      groupByAgePeople[person.age].push(person);
+    } else {
+      groupByAgePeople[person.age] = [];
+      groupByAgePeople[person.age].push(person);
+    }
+  }
+
+  return groupByAgePeople;
+}
+
+console.log(
+  groupByAge([
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 25 },
+    { name: "Charlie", age: 30 },
+  ])
+); // Expected output: { 25: [{ name: "Alice", age: 25 }, { name: "Bob", age: 25 }], 30: [{ name: "Charlie", age: 30 }] }
